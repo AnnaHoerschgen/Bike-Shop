@@ -100,4 +100,21 @@
             WHERE id = 4;
         ";
     }
+
+    function sqlCompletedRentals(): string {
+        return "
+            SELECT 
+                bikes.model,
+                bikes.hourly_rate,
+                customers.first_name,
+                customers.last_name,
+                rentals.start_time,
+                rentals.end_time
+            FROM rentals
+            JOIN bikes ON rentals.bike_id = bikes.id
+            JOIN customers ON rentals.customer_id = customers.id
+            WHERE rentals.end_time IS NOT NULL
+            ORDER BY rentals.start_time;
+        ";
+    }
 ?>
