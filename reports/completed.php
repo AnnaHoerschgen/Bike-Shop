@@ -20,8 +20,15 @@
             <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)):
                 $start = new DateTime($row['start_time']);
                 $end = new DateTime($row['end_time']);
-                $intervasl = $start->diff($end);
-                $minutes = ($interval->h * 60) + $interval->i;
+                // $intervasl = $start->diff($end);
+                $minutes = max(
+                    0,
+                    round(
+                        abs(
+                            ($end->getTimestamp() - $start->getTimestamp()) / 60
+                        )
+                    )
+                );
                 $rate = (float) $row['hourly_rate'];
                 $cost = ($minutes / 60) * $rate;
             ?>
@@ -30,7 +37,7 @@
                     <td><?= htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) ?></td>
                     <td><?= $start->format('H:i') ?></td>
                     <td><?= $end->format('H:i') ?></td>
-                    <td><?= $minutes ?></td>
+                    <td><?= $minutes ?> min.</td>
                     <td>$<?= number_format($cost, 2) ?></td>
                 </tr>
             <?php endwhile; ?>
