@@ -73,9 +73,10 @@
 <body>
     <?php
         if($dbSuccess) {
+            include "includes/header.php";
+            
             include "reports/{$report}.php";
 
-            include "includes/header.php";
             include "includes/footer.php";
         }
     ?>
