@@ -1,6 +1,8 @@
 <?php
     include "../functions.php";
     
+    error_reporting(0);
+    
     $sql = sqlAvailableBikes();
     $stmt = $pdo->query($sql);
 

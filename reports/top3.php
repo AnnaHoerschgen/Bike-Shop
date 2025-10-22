@@ -1,6 +1,8 @@
 <?php
-    include "../functions.php"; // just in case something goes wrong
+    include "../functions.php";
     
+    error_reporting(0);
+        
     $sql = sqlTop3Bikes();
     $stmt = $pdo->query($sql);
 
