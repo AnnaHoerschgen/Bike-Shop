@@ -3,6 +3,8 @@
 
     error_reporting(E_ALL ^ E_WARNING);
 
+    $dbSuccess = false;
+
     $DB_HOST = "localhost";
     $DB_NAME = "bikeshop";
     $DB_USER = "root";
@@ -24,10 +26,7 @@
         ];
         $report = $_GET['report'] ?? 'available';
 
-        include "reports/{$report}.php";
-
-        include "includes/header.php";
-        include "includes/footer.php";
+        $dbSuccess = true;
 
     } catch (PDOException $e) {
         die("Database connection failed: " . $e->getMessage());
@@ -73,6 +72,14 @@
 </head>
 
 <body>
+    <?php
+        if($dbSuccess) {
+            include "reports/{$report}.php";
+
+            include "includes/header.php";
+            include "includes/footer.php";
+        }
+    ?>
 </body>
 
 </html>

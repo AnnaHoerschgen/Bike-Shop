@@ -1,5 +1,5 @@
 <?php
-    include "../functions.php";
+    // include "../functions.php";
     
     error_reporting(0);
         
