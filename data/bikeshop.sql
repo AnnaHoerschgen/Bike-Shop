@@ -97,6 +97,7 @@ INSERT INTO `rentals` (`id`, `bike_id`, `customer_id`, `start_time`, `end_time`,
 (6, 1, 4, '12:10:00', '12:55:00', NULL),
 (7, 2, 2, '16:00:00', NULL, NULL),
 (8, 3, 5, '11:25:00', '12:40:00', NULL);
+-- Author's note: Sorry if these are empty, I couldn't find any data on them
 
 --
 -- Indexes for dumped tables
