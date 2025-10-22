@@ -27,7 +27,6 @@
         $report = $_GET['report'] ?? 'available';
 
         $dbSuccess = true;
-
     } catch (PDOException $e) {
         die("Database connection failed: " . $e->getMessage());
     }
