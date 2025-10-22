@@ -15,6 +15,7 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
+// helper to display queries
 function displayQueryResults($pdo, $sql, $title)
 {
     echo "<h2>$title</h2>";
@@ -54,60 +55,54 @@ function displayQueryResults($pdo, $sql, $title)
 
 <body>
     <h1>Bike Shop Activity</h1>
-    <div>
-        <?php
-        displayQueryResults($pdo, sqlAllCustomers(), "All Customers");
-        ?>
+
+    <div id="all-customers">
+        <?php displayQueryResults($pdo, sqlAllCustomers(), "All Customers"); ?>
     </div>
     <br>
 
-    <div>
-        <?php
-        displayQueryResults($pdo, sqlAvailableBikes(), "Available Bikes");
-        ?>
+    <div id="available-bikes">
+        <?php displayQueryResults($pdo, sqlAvailableBikes(), "Available Bikes"); ?>
     </div>
     <br>
 
-    <div>
-        <?php
-        displayQueryResults($pdo, sqlBikeRentals(), "Bike Rentals");
-        ?>
+    <div id="all-bikes-by-price">
+        <?php displayQueryResults($pdo, sqlAllCustomers(), "All Bikes by Price"); ?>
     </div>
     <br>
 
-
-    <div>
-        <?php
-        displayQueryResults($pdo, sqlMorningRentals(), "Morning Rentals");
-        ?>
+    <div id="open-rentals">
+        <?php displayQueryResults($pdo, sqlOpenRentals(), "Open Rentals"); ?>
     </div>
     <br>
 
-    <div>
-        <?php
-        displayQueryResults($pdo, sqlTop3Bikes(), "Top 3 Bikes");
-        ?>
+    <div id="join-rentals-customers">
+        <?php displayQueryResults($pdo, sqlJoinRentalsCustomers(), "Join Rentals and Customers"); ?>
     </div>
     <br>
 
-    <div>
-        <?php
-        displayQueryResults($pdo, sqlAllJoins(), "All Joins");
-        ?>
+    <div id="join-rentals-bikes">
+        <?php displayQueryResults($pdo, sqlAllCustomers(), "Join Rentals and Bikes"); ?>
     </div>
     <br>
 
-    <div>
-        <?php
-        displayQueryResults($pdo, sqlUpdateEndTime(4), "Update End Time");
-        ?>
+    <div id="top-3-bikes">
+        <?php displayQueryResults($pdo, sqlTop3Bikes(), "Top 3 Bikes"); ?>
     </div>
     <br>
 
-    <div>
-        <?php
-        displayQueryResults($pdo, sqlUpdateBikeStatus(4), "Update Bike Status");
-        ?>
+    <div id="multi-join-rentals">
+        <?php displayQueryResults($pdo, sqlMultiJoinRentals(), "Multi-Join Rentals"); ?>
+    </div>
+    <br>
+
+    <div id="update-close-rental">
+        <?php displayQueryResults($pdo, sqlUpdateCloseRental(4), "Update Closed Rental"); ?>
+    </div>
+    <br>
+
+    <div id="update-bike-unavailable">
+        <?php displayQueryResults($pdo, sqlUpdateBikeUnavailable(4), "Update Unavailable Bike"); ?>
     </div>
     <br>
 </body>

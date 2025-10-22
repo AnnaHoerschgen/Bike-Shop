@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 22, 2025 at 03:32 PM
+-- Generation Time: Oct 22, 2025 at 04:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,11 +40,11 @@ CREATE TABLE `bikes` (
 --
 
 INSERT INTO `bikes` (`model`, `type`, `hourly_rate`, `available`, `id`) VALUES
-('Trek Marlin 6', 'MTB', 12.00, 1, 6),
-('Giant Escape 3', 'Hybrid', 10.00, 1, 7),
-('Specialized Sirrus X', 'Commuter', 11.50, 0, 8),
-('Co-op DRT 1.1', 'MTB', 13.00, 1, 9),
-('Electra Townie 7D', 'Cruiser', 9.50, 0, 10);
+('Trek Marlin 6', 'MTB', 12.00, 1, 1),
+('Giant Escape 3', 'Hybrid', 10.00, 1, 2),
+('Specialized Sirrus X', 'Commuter', 11.50, 0, 3),
+('Co-op DRT 1.1', 'MTB', 13.00, 0, 4),
+('Electra Townie 7D', 'Cruiser', 9.50, 0, 5);
 
 -- --------------------------------------------------------
 
@@ -89,14 +89,14 @@ CREATE TABLE `rentals` (
 --
 
 INSERT INTO `rentals` (`id`, `bike_id`, `customer_id`, `start_time`, `end_time`, `total_cost`) VALUES
-(6, 1, 2, '10:15:00', '11:45:00', NULL),
-(7, 2, 5, '13:00:00', '14:10:00', NULL),
-(8, 3, 1, '09:30:00', NULL, NULL),
-(9, 4, 6, '15:05:00', '15:50:00', NULL),
-(10, 5, 3, '08:45:00', '09:20:00', NULL),
-(11, 1, 4, '12:10:00', '12:55:00', NULL),
-(12, 2, 2, '16:00:00', NULL, NULL),
-(13, 3, 5, '11:25:00', '12:40:00', NULL);
+(1, 1, 2, '10:15:00', '11:45:00', NULL),
+(2, 2, 5, '13:00:00', '14:10:00', NULL),
+(3, 3, 1, '09:30:00', '09:05:06', NULL),
+(4, 4, 6, '15:05:00', '15:50:00', NULL),
+(5, 5, 3, '08:45:00', '09:20:00', NULL),
+(6, 1, 4, '12:10:00', '12:55:00', NULL),
+(7, 2, 2, '16:00:00', NULL, NULL),
+(8, 3, 5, '11:25:00', '12:40:00', NULL);
 
 --
 -- Indexes for dumped tables
