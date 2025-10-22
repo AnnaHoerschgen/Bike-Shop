@@ -2,7 +2,7 @@
 require "functions.php";
 
 $DB_HOST = "localhost";
-$DB_NAME = "bike_shop";
+$DB_NAME = "bikeshop";
 $DB_USER = "root";
 $DB_PASS = "";
 

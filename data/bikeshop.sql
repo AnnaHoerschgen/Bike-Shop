@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 20, 2025 at 04:52 PM
+-- Generation Time: Oct 22, 2025 at 03:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,6 +31,7 @@ CREATE TABLE `bikes` (
   `model` varchar(100) NOT NULL,
   `type` varchar(50) NOT NULL,
   `hourly_rate` decimal(5,2) NOT NULL,
+  `available` tinyint(4) NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -38,12 +39,12 @@ CREATE TABLE `bikes` (
 -- Dumping data for table `bikes`
 --
 
-INSERT INTO `bikes` (`model`, `type`, `hourly_rate`, `id`) VALUES
-('Trek Marlin 6', 'Mountain', 12.00, 1),
-('Giant Escape 3', 'Road', 10.00, 2),
-('Co-op DRT 1.1', 'Hybrid', 13.00, 3),
-('Specialized Sirrus X', 'Road', 15.00, 4),
-('Cannondale Quick 4', 'Hybrid', 11.00, 5);
+INSERT INTO `bikes` (`model`, `type`, `hourly_rate`, `available`, `id`) VALUES
+('Trek Marlin 6', 'MTB', 12.00, 1, 6),
+('Giant Escape 3', 'Hybrid', 10.00, 1, 7),
+('Specialized Sirrus X', 'Commuter', 11.50, 0, 8),
+('Co-op DRT 1.1', 'MTB', 13.00, 1, 9),
+('Electra Townie 7D', 'Cruiser', 9.50, 0, 10);
 
 -- --------------------------------------------------------
 
@@ -79,19 +80,23 @@ CREATE TABLE `rentals` (
   `bike_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `start_time` time NOT NULL,
-  `end_time` time DEFAULT NULL
+  `end_time` time DEFAULT NULL,
+  `total_cost` decimal(6,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rentals`
 --
 
-INSERT INTO `rentals` (`id`, `bike_id`, `customer_id`, `start_time`, `end_time`) VALUES
-(1, 1, 1, '10:15:00', '11:45:00'),
-(2, 2, 3, '13:00:00', '14:10:00'),
-(3, 3, 2, '15:05:00', '15:50:00'),
-(4, 4, 5, '16:00:00', NULL),
-(5, 5, 4, '09:20:00', NULL);
+INSERT INTO `rentals` (`id`, `bike_id`, `customer_id`, `start_time`, `end_time`, `total_cost`) VALUES
+(6, 1, 2, '10:15:00', '11:45:00', NULL),
+(7, 2, 5, '13:00:00', '14:10:00', NULL),
+(8, 3, 1, '09:30:00', NULL, NULL),
+(9, 4, 6, '15:05:00', '15:50:00', NULL),
+(10, 5, 3, '08:45:00', '09:20:00', NULL),
+(11, 1, 4, '12:10:00', '12:55:00', NULL),
+(12, 2, 2, '16:00:00', NULL, NULL),
+(13, 3, 5, '11:25:00', '12:40:00', NULL);
 
 --
 -- Indexes for dumped tables
@@ -123,7 +128,7 @@ ALTER TABLE `rentals`
 -- AUTO_INCREMENT for table `bikes`
 --
 ALTER TABLE `bikes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -135,7 +140,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `rentals`
 --
 ALTER TABLE `rentals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
